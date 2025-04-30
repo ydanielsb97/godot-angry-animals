@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://b5ospojq0yc0g" path="res://Assets/env/elementWood015.png" id="2_1tkc5"]
 [ext_resource type="AudioStream" uid="uid://dtpm6r6jmoh8t" path="res://Assets/audio/vanish.wav" id="3_jdgvp"]
 
+[sub_resource type="Animation" id="Animation_jdgvp"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_1tkc5"]
 resource_name = "vanish"
 step = 0.1
@@ -35,9 +38,6 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0)
 }
 tracks/1/use_blend = true
-
-[sub_resource type="Animation" id="Animation_jdgvp"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nfkcc"]
 _data = {
@@ -72,6 +72,6 @@ libraries = {
 }
 
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]
-volume_db = -25.0
+bus = &"Animation"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

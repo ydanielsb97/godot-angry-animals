@@ -17,4 +17,5 @@ func _on_mouse_exited() -> void:
 
 func _on_pressed() -> void:
 	ScoreManager.level_selected = level_number
+	
 	get_tree().change_scene_to_file("res://Scenes/LevelBase/Level%s.tscn" % level_number)

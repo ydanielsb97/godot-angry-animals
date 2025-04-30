@@ -6,7 +6,10 @@ class_name Cup
 
 static var _num_cups: int = 0
 
-# Called when the node enters the scene tree for the first time.
+func _unhandled_input(event: InputEvent) -> void:
+	if  event.is_action_pressed("exit") and _num_cups > 0:
+		_num_cups = 0
+
 func _ready() -> void:
 	_num_cups += 1
 

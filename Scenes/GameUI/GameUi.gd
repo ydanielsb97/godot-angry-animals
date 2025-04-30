@@ -24,9 +24,9 @@ func update_attempts_label() -> void:
 
 func on_cup_destroyed(remaining_cups: int) -> void:
 	if remaining_cups == 0:
-		v_box_container_2.show()
-		audio_stream_player.play()
 		ScoreManager.set_score_for_level(
 			ScoreManager.level_selected,
 			_attempts
 		)
+		v_box_container_2.show()
+		audio_stream_player.play()

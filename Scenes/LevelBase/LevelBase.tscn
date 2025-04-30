@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://bavmjbyxuto0b"]
+
+[ext_resource type="Texture2D" uid="uid://b1er0fdrddkeu" path="res://Assets/scene/colored_castle.png" id="1_5ufo3"]
+[ext_resource type="Script" uid="uid://c6fgtfydijxn4" path="res://Scenes/LevelBase/LevelBase.gd" id="1_bgw71"]
+[ext_resource type="PackedScene" uid="uid://w6ecrdws46xa" path="res://Scenes/Water/Water.tscn" id="3_78m1b"]
+[ext_resource type="PackedScene" uid="uid://d3qum4w3rjrrb" path="res://Scenes/GameUI/GameUI.tscn" id="5_lmtt4"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3lxj6"]
+bounce = 0.5
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3lxj6"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lmtt4"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ooqsx"]
+
+[node name="LevelBase" type="Node2D"]
+script = ExtResource("1_bgw71")
+
+[node name="ColoredCastle" type="Sprite2D" parent="."]
+position = Vector2(5, -218)
+scale = Vector2(1.15234, 1.19238)
+texture = ExtResource("1_5ufo3")
+centered = false
+
+[node name="AnimalStart" type="Marker2D" parent="."]
+position = Vector2(187, 368)
+
+[node name="Water" parent="." instance=ExtResource("3_78m1b")]
+position = Vector2(0, 596)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameUI" parent="CanvasLayer" instance=ExtResource("5_lmtt4")]
+
+[node name="Boundaries" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Boundaries"]
+physics_material_override = SubResource("PhysicsMaterial_3lxj6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D"]
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_3lxj6")
+one_way_collision = true
+one_way_collision_margin = 5.0
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Boundaries"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundaries/StaticBody2D2"]
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_lmtt4")
+one_way_collision = true
+one_way_collision_margin = 5.0
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(1150, -1)
+rotation = 3.14159
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundaries/StaticBody2D3"]
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_ooqsx")
+one_way_collision = true
+one_way_collision_margin = 5.0

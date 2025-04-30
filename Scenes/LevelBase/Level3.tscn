@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkxrna7mpa0qh"]
+
+[ext_resource type="PackedScene" uid="uid://bavmjbyxuto0b" path="res://Scenes/LevelBase/LevelBase.tscn" id="1_bmdap"]
+[ext_resource type="PackedScene" uid="uid://28b02oavyfe3" path="res://Scenes/Cup/Cup.tscn" id="2_di0pm"]
+[ext_resource type="Texture2D" uid="uid://qt4yx36fjy8i" path="res://Assets/env/elementWood019.png" id="3_di0pm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_di0pm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_di0pm"]
+size = Vector2(43.5, 218)
+
+[node name="Level3" instance=ExtResource("1_bmdap")]
+
+[node name="Cup" parent="." index="4" instance=ExtResource("2_di0pm")]
+position = Vector2(494, 451)
+
+[node name="Cup2" parent="." index="5" instance=ExtResource("2_di0pm")]
+position = Vector2(686, 373)
+
+[node name="Cup3" parent="." index="6" instance=ExtResource("2_di0pm")]
+position = Vector2(890, 327)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="8"]
+physics_material_override = SubResource("PhysicsMaterial_di0pm")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" index="0"]
+position = Vector2(1009, 130)
+scale = Vector2(0.628571, 1)
+texture = ExtResource("3_di0pm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="1"]
+position = Vector2(1009.25, 130)
+shape = SubResource("RectangleShape2D_di0pm")
